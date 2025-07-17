@@ -12,6 +12,11 @@
     --electric-light-blue: 209 73% 59%;   /* #4397E0 - Light blue */
     --electric-gray: 0 0% 85%;            /* #D9D9D9 - Light gray */
     --electric-accent: 12 38% 52%;        /* #B55D49 - Accent brown/red */
+    --electric-orange: 24 95% 53%;        /* #FF6B35 - Bright orange */
+    --electric-gradient-hero: linear-gradient(135deg, #FF6B35, #F7931E, #3E8ED4);
+    
+    /* Additional brand colors for better contrast */
+    --electric-dark-blue: 229 84% 12%;    /* Darker navy for better contrast */
     
     /* Base design system using brand colors */
     --background: 0 0% 100%;

@@ -20,6 +20,7 @@ const buttonVariants = cva(
         link: "text-primary underline-offset-4 hover:underline",
         electric: "bg-gradient-electric text-white hover:shadow-electric transition-all duration-300 shadow-lg",
         "electric-accent": "bg-electric-accent text-white hover:bg-electric-accent/90 transition-all duration-300 shadow-navy",
+        "electric-orange": "bg-electric-orange text-white hover:bg-electric-orange/90 transition-all duration-300 shadow-lg font-kanit font-bold",
         "electric-outline": "border-2 border-electric-blue bg-transparent text-electric-blue hover:bg-electric-blue hover:text-white transition-all duration-300",
         nav: "bg-electric-light-blue text-white hover:bg-electric-light-blue/90 font-kanit font-bold rounded-lg shadow-lg transition-all duration-300",
       },

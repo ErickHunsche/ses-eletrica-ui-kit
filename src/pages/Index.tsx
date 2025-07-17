@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
-import { Phone, Mail, MapPin, Instagram, Facebook, ChevronDown } from "lucide-react";
-import heroImage from "@/assets/hero-electrical.jpg";
+import { Phone, Mail, MapPin, Instagram, Facebook, ChevronDown, Truck, HardHat, ShoppingCart, Headphones, Settings, Shield, Zap } from "lucide-react";
+import heroExpert from "@/assets/hero-expert.jpg";
 import servicePoles from "@/assets/service-poles.jpg";
 import serviceCameras from "@/assets/service-cameras.jpg";
 import serviceElectrical from "@/assets/service-electrical.jpg";
@@ -77,26 +77,76 @@ const Index = () => {
 
       {/* Hero Section */}
       <section 
-        className="h-[700px] bg-cover bg-center relative flex items-center justify-center"
-        style={{ backgroundImage: `url(${heroImage})` }}
+        className="h-[700px] bg-gradient-to-r from-orange-500 via-orange-400 to-blue-500 relative flex items-center justify-between"
       >
-        <div className="absolute inset-0 bg-electric-navy/70"></div>
-        <div className="relative z-10 text-center text-white max-w-4xl mx-auto px-4">
-          <h2 className="text-6xl font-bold mb-6">S&S ELÉTRICA</h2>
-          <p className="text-2xl font-light mb-8">Soluções Elétricas Profissionais para Sua Segurança</p>
-          <div className="space-y-4">
-            <div className="flex items-center justify-center space-x-2 text-xl">
-              <Phone className="w-6 h-6" />
-              <span>(51)99999-9999</span>
+        <div className="absolute inset-0 bg-electric-navy/20"></div>
+        
+        {/* Left side - Text */}
+        <div className="relative z-10 max-w-lg mx-auto px-8 text-white">
+          <h2 className="text-6xl font-bold mb-4 leading-tight">
+            THE EXPERT<br />
+            IN ELECTRIC
+          </h2>
+          <div className="bg-electric-navy/80 p-6 rounded-lg mb-6">
+            <h3 className="text-2xl font-medium mb-4">No Job Too Small</h3>
+            <p className="text-sm leading-relaxed mb-4">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed diam nonummy nibh 
+              euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.
+            </p>
+            <div className="text-orange-400 font-bold mb-4">
+              24 hrs. Emergency Services
             </div>
-            <div className="flex items-center justify-center space-x-2 text-xl">
-              <MapPin className="w-6 h-6" />
-              <span>ROCA SALES - RS</span>
-            </div>
+            <Button variant="electric-orange" className="px-8 py-3">
+              MORE INFO
+            </Button>
           </div>
         </div>
-        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
-          <ChevronDown className="w-8 h-8 text-white" />
+
+        {/* Right side - Professional Image */}
+        <div 
+          className="relative z-10 flex-1 h-full bg-cover bg-center"
+          style={{ backgroundImage: `url(${heroExpert})` }}
+        >
+          <div className="absolute inset-0 bg-gradient-to-l from-transparent to-orange-500/30"></div>
+        </div>
+      </section>
+
+      {/* Services Icons Section */}
+      <section className="py-16 bg-electric-navy">
+        <div className="container mx-auto px-4">
+          <div className="grid md:grid-cols-4 gap-8 text-center">
+            <div className="text-white group cursor-pointer">
+              <div className="flex flex-col items-center space-y-4 p-6 rounded-lg hover:bg-white/10 transition-all duration-300">
+                <Truck className="w-16 h-16 group-hover:scale-110 transition-transform duration-300" />
+                <h3 className="text-lg font-medium">SERVIÇOS</h3>
+                <ChevronDown className="w-6 h-6 opacity-60" />
+              </div>
+            </div>
+            
+            <div className="text-white group cursor-pointer" onClick={() => scrollToSection('about')}>
+              <div className="flex flex-col items-center space-y-4 p-6 rounded-lg hover:bg-white/10 transition-all duration-300">
+                <HardHat className="w-16 h-16 group-hover:scale-110 transition-transform duration-300" />
+                <h3 className="text-lg font-medium">QUEM SOMOS?</h3>
+                <ChevronDown className="w-6 h-6 opacity-60" />
+              </div>
+            </div>
+            
+            <div className="text-white group cursor-pointer">
+              <div className="flex flex-col items-center space-y-4 p-6 rounded-lg hover:bg-white/10 transition-all duration-300">
+                <ShoppingCart className="w-16 h-16 group-hover:scale-110 transition-transform duration-300" />
+                <h3 className="text-lg font-medium">PRODUTOS</h3>
+                <ChevronDown className="w-6 h-6 opacity-60" />
+              </div>
+            </div>
+            
+            <div className="text-white group cursor-pointer" onClick={() => scrollToSection('contact')}>
+              <div className="flex flex-col items-center space-y-4 p-6 rounded-lg hover:bg-white/10 transition-all duration-300">
+                <Headphones className="w-16 h-16 group-hover:scale-110 transition-transform duration-300" />
+                <h3 className="text-lg font-medium">CONTATO</h3>
+                <ChevronDown className="w-6 h-6 opacity-60" />
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -115,7 +165,7 @@ const Index = () => {
               <div className="p-6">
                 <h3 className="text-2xl font-medium text-electric-navy mb-4">INSTALAÇÃO DE POSTES</h3>
                 <p className="text-gray-600 mb-6">Instalação profissional de postes elétricos com segurança e qualidade garantida.</p>
-                <Button variant="electric-accent" className="w-full font-light text-xl py-3">
+                <Button variant="electric-orange" className="w-full font-bold text-xl py-3 rounded-lg">
                   DETALHES
                 </Button>
               </div>
@@ -127,7 +177,7 @@ const Index = () => {
               <div className="p-6">
                 <h3 className="text-2xl font-medium text-electric-navy mb-4">INSTALAÇÃO DE CÂMERAS</h3>
                 <p className="text-gray-600 mb-6">Sistemas de segurança com câmeras de alta qualidade e monitoramento 24h.</p>
-                <Button variant="electric-accent" className="w-full font-light text-xl py-3">
+                <Button variant="electric-orange" className="w-full font-bold text-xl py-3 rounded-lg">
                   DETALHES
                 </Button>
               </div>
@@ -139,7 +189,7 @@ const Index = () => {
               <div className="p-6">
                 <h3 className="text-2xl font-medium text-electric-navy mb-4">INSTALAÇÕES ELÉTRICAS</h3>
                 <p className="text-gray-600 mb-6">Instalações elétricas residenciais e comerciais com total segurança.</p>
-                <Button variant="electric-accent" className="w-full font-light text-xl py-3">
+                <Button variant="electric-orange" className="w-full font-bold text-xl py-3 rounded-lg">
                   DETALHES
                 </Button>
               </div>
@@ -151,37 +201,73 @@ const Index = () => {
       {/* About Section */}
       <section id="about" className="py-20 bg-electric-navy">
         <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto">
+          <div className="max-w-6xl mx-auto">
             <div className="text-center mb-12">
               <h2 className="text-5xl font-bold text-white mb-6">QUEM SOMOS?</h2>
-              <div className="w-24 h-1 bg-electric-accent mx-auto mb-8"></div>
+              <div className="w-24 h-1 bg-electric-orange mx-auto mb-8"></div>
             </div>
             
-            <div className="bg-white rounded-lg p-8 shadow-xl">
-              <div className="text-center">
-                <h3 className="text-3xl font-medium text-electric-navy mb-6">S&S Elétrica</h3>
-                <p className="text-lg text-gray-700 leading-relaxed mb-6">
+            <div className="grid lg:grid-cols-2 gap-12 items-center">
+              {/* Left side - Company Info */}
+              <div className="bg-electric-navy p-8 rounded-lg">
+                <div className="flex items-center mb-6">
+                  <div className="bg-orange-500 text-white px-4 py-2 rounded-lg font-bold text-lg mr-4">
+                    R
+                  </div>
+                  <span className="text-white text-xl font-medium">ROCA SALES</span>
+                </div>
+                
+                <h3 className="text-4xl font-bold text-white mb-4">Quem Somos</h3>
+                <h4 className="text-3xl font-bold text-orange-400 mb-6">Apresentação</h4>
+                
+                <p className="text-white/90 leading-relaxed mb-8">
                   Somos uma empresa especializada em serviços elétricos com anos de experiência no mercado. 
                   Nossa equipe altamente qualificada oferece soluções completas em instalações elétricas, 
                   sistemas de segurança e infraestrutura elétrica.
                 </p>
-                <p className="text-lg text-gray-700 leading-relaxed mb-8">
-                  Priorizamos a segurança, qualidade e satisfação de nossos clientes, utilizando sempre 
-                  materiais de primeira linha e seguindo todas as normas técnicas vigentes.
-                </p>
-                <div className="grid md:grid-cols-3 gap-6 text-center">
-                  <div>
-                    <div className="text-3xl font-bold text-electric-blue mb-2">10+</div>
-                    <div className="text-gray-600">Anos de Experiência</div>
+                
+                <Button variant="electric-orange" className="px-8 py-3 font-bold">
+                  Saiba mais agora
+                </Button>
+                
+                {/* Benefits Icons */}
+                <div className="grid grid-cols-3 gap-6 mt-8">
+                  <div className="text-center">
+                    <div className="bg-white/10 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-3">
+                      <Settings className="w-8 h-8 text-white" />
+                    </div>
+                    <p className="text-white text-sm font-medium">Anos de Experiência</p>
                   </div>
-                  <div>
-                    <div className="text-3xl font-bold text-electric-blue mb-2">500+</div>
-                    <div className="text-gray-600">Projetos Realizados</div>
+                  
+                  <div className="text-center">
+                    <div className="bg-white/10 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-3">
+                      <Zap className="w-8 h-8 text-white" />
+                    </div>
+                    <p className="text-white text-sm font-medium">Serviços Elétricos</p>
                   </div>
-                  <div>
-                    <div className="text-3xl font-bold text-electric-blue mb-2">24h</div>
-                    <div className="text-gray-600">Atendimento de Emergência</div>
+                  
+                  <div className="text-center">
+                    <div className="bg-white/10 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-3">
+                      <Shield className="w-8 h-8 text-white" />
+                    </div>
+                    <p className="text-white text-sm font-medium">Confiança</p>
                   </div>
+                </div>
+              </div>
+
+              {/* Right side - Tools Image */}
+              <div className="relative">
+                <div className="bg-gradient-to-br from-orange-400 to-yellow-400 rounded-lg p-8 h-96 flex items-center justify-center">
+                  <div className="text-center">
+                    <div className="text-6xl mb-4">🔧</div>
+                    <h4 className="text-2xl font-bold text-white mb-2">Ferramentas Profissionais</h4>
+                    <p className="text-white/90">Equipamentos de última geração para máxima qualidade</p>
+                  </div>
+                </div>
+                
+                {/* Floating badge */}
+                <div className="absolute bottom-4 right-4 bg-electric-navy text-white px-4 py-2 rounded-full text-sm font-bold">
+                  24/7 Disponível
                 </div>
               </div>
             </div>

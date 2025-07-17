@@ -69,11 +69,14 @@ export default {
 				'electric-blue': 'hsl(var(--electric-blue))',
 				'electric-light-blue': 'hsl(var(--electric-light-blue))',
 				'electric-gray': 'hsl(var(--electric-gray))',
-				'electric-accent': 'hsl(var(--electric-accent))'
+				'electric-accent': 'hsl(var(--electric-accent))',
+				'electric-orange': 'hsl(var(--electric-orange))',
+				'electric-dark-blue': 'hsl(var(--electric-dark-blue))'
 			},
 			backgroundImage: {
 				'gradient-electric': 'var(--gradient-electric)',
-				'gradient-services': 'var(--gradient-services)'
+				'gradient-services': 'var(--gradient-services)',
+				'gradient-hero': 'var(--electric-gradient-hero)'
 			},
 			boxShadow: {
 				'electric': 'var(--shadow-electric)',
