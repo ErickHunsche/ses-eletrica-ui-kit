@@ -1,4 +1,5 @@
 
+import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Phone, Mail, MapPin, Instagram, Facebook, ChevronDown, Truck, HardHat, ShoppingCart, Headphones, Settings, Shield, Zap, Snowflake } from "lucide-react";
 import { HoverEffect } from "@/components/ui/hover-effect";
@@ -9,6 +10,17 @@ import serviceCameras from "@/assets/service-cameras.jpg";
 import serviceElectrical from "@/assets/service-electrical.jpg";
 
 const Index = () => {
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 50);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
     element?.scrollIntoView({ behavior: 'smooth' });
@@ -79,56 +91,55 @@ const Index = () => {
       </div>
 
       {/* Header */}
-      <header className="bg-[#0C3282] shadow-lg sticky top-0 z-50 border-b border-[#1F1520]">
-        <div className="container mx-auto px-4">
-          <div className="flex items-center justify-between h-[272px]">
+      <header className={`bg-[#0C3282] shadow-lg sticky top-0 z-50 border-b border-[#1F1520] transition-all duration-300 ${isScrolled ? 'h-[180px]' : 'h-[272px]'}`}>
+        <div className="container mx-auto px-4 h-full">
+          <div className="flex items-center justify-between h-full">
             {/* Left side - Location */}
             <div className="flex items-center space-x-3 text-white">
               <MapPin className="w-6 h-6" />
-              <span className="text-2xl font-light">ROCA SALES - RS</span>
+              <span className={`font-light transition-all duration-300 ${isScrolled ? 'text-lg' : 'text-2xl'}`}>ROCA SALES - RS</span>
             </div>
 
             {/* Center - Logo and Company Name */}
-            <div className="text-center">
+            <div className="text-center flex flex-col items-center">
               <div className="flex items-center justify-center space-x-4 mb-2">
-                <div className="w-20 h-20 bg-electric-gray rounded-full flex items-center justify-center">
-                  <span className="text-[#0C3282] font-bold text-2xl">S&S</span>
-                </div>
                 <div>
-                  <h1 className="text-white text-5xl font-medium">S&S ENERGIA</h1>
-                  <p className="text-white text-3xl font-light">descrição</p>
+                  <h1 className={`text-white font-medium transition-all duration-300 ${isScrolled ? 'text-3xl' : 'text-5xl'}`}>S&S ENERGIA</h1>
+                  <p className={`text-white font-light transition-all duration-300 ${isScrolled ? 'text-xl' : 'text-3xl'}`}>descrição</p>
                 </div>
               </div>
               
               {/* Navigation Links */}
-              <div className="flex items-center justify-center space-x-8 mt-4">
+              <div className={`flex items-center justify-center space-x-4 transition-all duration-300 ${isScrolled ? 'mt-2' : 'mt-4'}`}>
                 <Button 
                   variant="ghost" 
-                  className="text-white font-bold text-lg hover:bg-white/20 transition-all duration-300"
+                  className="text-white font-bold text-sm bg-electric-navy/50 hover:bg-electric-navy/70 transition-all duration-300 rounded-2xl px-6 py-2 border border-white/20"
                   onClick={() => scrollToSection('contact')}
                 >
                   CONTATO
                 </Button>
                 <Button 
                   variant="ghost" 
-                  className="text-white font-bold text-lg hover:bg-white/20 transition-all duration-300"
+                  className="text-white font-bold text-sm bg-electric-navy/50 hover:bg-electric-navy/70 transition-all duration-300 rounded-2xl px-6 py-2 border border-white/20"
                   onClick={() => scrollToSection('services')}
                 >
                   ORÇAMENTO
                 </Button>
                 
-                <div className="w-16 h-16 bg-electric-gray rounded-full"></div>
+                <div className={`bg-electric-gray rounded-full flex items-center justify-center transition-all duration-300 ${isScrolled ? 'w-12 h-12' : 'w-16 h-16'}`}>
+                  <span className={`text-[#0C3282] font-bold transition-all duration-300 ${isScrolled ? 'text-lg' : 'text-2xl'}`}>S&S</span>
+                </div>
                 
                 <Button 
                   variant="ghost" 
-                  className="text-white font-bold text-lg hover:bg-white/20 transition-all duration-300"
+                  className="text-white font-bold text-sm bg-electric-navy/50 hover:bg-electric-navy/70 transition-all duration-300 rounded-2xl px-6 py-2 border border-white/20"
                   onClick={() => scrollToSection('services')}
                 >
                   SERVIÇOS
                 </Button>
                 <Button 
                   variant="ghost" 
-                  className="text-white font-bold text-lg hover:bg-white/20 transition-all duration-300"
+                  className="text-white font-bold text-sm bg-electric-navy/50 hover:bg-electric-navy/70 transition-all duration-300 rounded-2xl px-6 py-2 border border-white/20"
                   onClick={() => scrollToSection('about')}
                 >
                   QUEM SOMOS?
@@ -139,7 +150,7 @@ const Index = () => {
             {/* Right side - Contact Button */}
             <div className="text-white">
               <Button 
-                className="bg-electric-light-blue text-white px-6 py-3 rounded-2xl font-light text-lg hover:bg-electric-light-blue/90"
+                className={`bg-electric-light-blue text-white font-light rounded-2xl hover:bg-electric-light-blue/90 transition-all duration-300 ${isScrolled ? 'px-4 py-2 text-sm' : 'px-6 py-3 text-lg'}`}
                 onClick={() => scrollToSection('contact')}
               >
                 ENTRE EM CONTATO
