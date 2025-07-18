@@ -1,5 +1,7 @@
+
 import { Button } from "@/components/ui/button";
-import { Phone, Mail, MapPin, Instagram, Facebook, ChevronDown, Truck, HardHat, ShoppingCart, Headphones, Settings, Shield, Zap } from "lucide-react";
+import { Phone, Mail, MapPin, Instagram, Facebook, ChevronDown, Truck, HardHat, ShoppingCart, Headphones, Settings, Shield, Zap, Snowflake } from "lucide-react";
+import { HoverEffect } from "@/components/ui/hover-effect";
 import heroExpert from "@/assets/hero-expert.jpg";
 import servicePoles from "@/assets/service-poles.jpg";
 import serviceCameras from "@/assets/service-cameras.jpg";
@@ -10,6 +12,49 @@ const Index = () => {
     const element = document.getElementById(sectionId);
     element?.scrollIntoView({ behavior: 'smooth' });
   };
+
+  const products = [
+    {
+      title: "Cabos Elétricos",
+      description: "Cabos de alta qualidade para instalações residenciais e comerciais",
+      price: "A partir de R$ 15,00/m"
+    },
+    {
+      title: "Disjuntores",
+      description: "Proteção segura para seus circuitos elétricos",
+      price: "A partir de R$ 45,00"
+    },
+    {
+      title: "Luminárias LED",
+      description: "Iluminação moderna e econômica para todos os ambientes",
+      price: "A partir de R$ 89,00"
+    },
+    {
+      title: "Quadros Elétricos",
+      description: "Distribuição elétrica organizada e segura",
+      price: "A partir de R$ 180,00"
+    },
+    {
+      title: "Tomadas e Interruptores",
+      description: "Acabamentos de qualidade para sua instalação",
+      price: "A partir de R$ 25,00"
+    },
+    {
+      title: "Condutores",
+      description: "Fios e cabos para todas as suas necessidades",
+      price: "A partir de R$ 8,00/m"
+    },
+    {
+      title: "Eletrodutos",
+      description: "Proteção para fiação elétrica",
+      price: "A partir de R$ 12,00/m"
+    },
+    {
+      title: "Ferramentas Elétricas",
+      description: "Equipamentos profissionais para instalação",
+      price: "A partir de R$ 150,00"
+    }
+  ];
 
   return (
     <div className="min-h-screen bg-electric-gray font-kanit">
@@ -23,55 +68,58 @@ const Index = () => {
                 <span className="text-electric-navy font-bold text-xl">S&S</span>
               </div>
               <div>
-                <h1 className="text-white text-2xl font-medium">S&S ELÉTRICA</h1>
+                <h1 className="text-white text-2xl font-medium">S&S ENERGIA</h1>
                 <p className="text-electric-gray text-sm font-light">Serviços Elétricos Profissionais</p>
               </div>
             </div>
 
+            {/* Navigation Links */}
+            <div className="hidden md:flex items-center space-x-8">
+              <Button 
+                variant="ghost" 
+                className="text-white font-bold text-lg hover:bg-white/20 transition-all duration-300"
+                onClick={() => scrollToSection('about')}
+              >
+                CONTATO
+              </Button>
+              <Button 
+                variant="ghost" 
+                className="text-white font-bold text-lg hover:bg-white/20 transition-all duration-300"
+                onClick={() => scrollToSection('services')}
+              >
+                ORÇAMENTO
+              </Button>
+              <Button 
+                variant="ghost" 
+                className="text-white font-bold text-lg hover:bg-white/20 transition-all duration-300"
+                onClick={() => scrollToSection('services')}
+              >
+                SERVIÇOS
+              </Button>
+              <Button 
+                variant="ghost" 
+                className="text-white font-bold text-lg hover:bg-white/20 transition-all duration-300"
+                onClick={() => scrollToSection('about')}
+              >
+                QUEM SOMOS?
+              </Button>
+              
+              {/* Orange Button */}
+              <Button 
+                variant="electric-orange"
+                className="font-bold text-lg px-6 py-3 rounded-full"
+                onClick={() => scrollToSection('contact')}
+              >
+                ENTRAR
+              </Button>
+            </div>
+
             {/* Contact Info */}
-            <div className="hidden md:flex items-center space-x-6 text-white">
-              <div className="flex items-center space-x-2">
-                <Phone className="w-4 h-4" />
-                <span className="font-light">(51)99999-9999</span>
-              </div>
+            <div className="hidden lg:flex items-center space-x-2 text-white">
+              <Phone className="w-4 h-4" />
+              <span className="font-light">(51)99999-9999</span>
             </div>
           </div>
-
-          {/* Navigation */}
-          <nav className="pb-4">
-            <div className="bg-electric-light-blue rounded-lg p-3 shadow-lg">
-              <div className="flex justify-center space-x-8">
-                <Button 
-                  variant="ghost" 
-                  className="text-white font-bold text-lg hover:bg-white/20 transition-all duration-300"
-                  onClick={() => scrollToSection('about')}
-                >
-                  QUEM SOMOS?
-                </Button>
-                <Button 
-                  variant="ghost" 
-                  className="text-white font-bold text-lg hover:bg-white/20 transition-all duration-300"
-                  onClick={() => scrollToSection('services')}
-                >
-                  SERVIÇOS
-                </Button>
-                <Button 
-                  variant="ghost" 
-                  className="text-white font-bold text-lg hover:bg-white/20 transition-all duration-300"
-                  onClick={() => scrollToSection('contact')}
-                >
-                  CONTATO
-                </Button>
-                <Button 
-                  variant="electric-accent"
-                  className="font-bold text-lg px-6"
-                  onClick={() => scrollToSection('contact')}
-                >
-                  ORÇAMENTO
-                </Button>
-              </div>
-            </div>
-          </nav>
         </div>
       </header>
 
@@ -131,7 +179,7 @@ const Index = () => {
               </div>
             </div>
             
-            <div className="text-white group cursor-pointer">
+            <div className="text-white group cursor-pointer" onClick={() => scrollToSection('products')}>
               <div className="flex flex-col items-center space-y-4 p-6 rounded-lg hover:bg-white/10 transition-all duration-300">
                 <ShoppingCart className="w-16 h-16 group-hover:scale-110 transition-transform duration-300" />
                 <h3 className="text-lg font-medium">PRODUTOS</h3>
@@ -158,14 +206,15 @@ const Index = () => {
             <div className="w-24 h-1 bg-electric-accent mx-auto"></div>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+          <div className="grid md:grid-cols-4 gap-8 max-w-7xl mx-auto">
             {/* Service 1 */}
             <div className="bg-white rounded-lg shadow-xl overflow-hidden transform hover:scale-105 transition-all duration-300">
-              <div className="h-80 bg-cover bg-center" style={{ backgroundImage: `url(${servicePoles})` }}></div>
+              <div className="h-64 bg-cover bg-center" style={{ backgroundImage: `url(${servicePoles})` }}></div>
               <div className="p-6">
-                <h3 className="text-2xl font-medium text-electric-navy mb-4">INSTALAÇÃO DE POSTES</h3>
-                <p className="text-gray-600 mb-6">Instalação profissional de postes elétricos com segurança e qualidade garantida.</p>
-                <Button variant="electric-orange" className="w-full font-bold text-xl py-3 rounded-lg">
+                <h3 className="text-xl font-medium text-electric-navy mb-4">INSTALAÇÃO DE POSTES</h3>
+                <p className="text-gray-600 mb-4 text-sm">Instalação profissional de postes elétricos com segurança e qualidade garantida.</p>
+                <p className="text-electric-orange font-bold mb-4">A partir de R$ 850,00</p>
+                <Button variant="electric-orange" className="w-full font-bold text-lg py-2 rounded-lg">
                   DETALHES
                 </Button>
               </div>
@@ -173,11 +222,12 @@ const Index = () => {
 
             {/* Service 2 */}
             <div className="bg-white rounded-lg shadow-xl overflow-hidden transform hover:scale-105 transition-all duration-300">
-              <div className="h-80 bg-cover bg-center" style={{ backgroundImage: `url(${serviceCameras})` }}></div>
+              <div className="h-64 bg-cover bg-center" style={{ backgroundImage: `url(${serviceCameras})` }}></div>
               <div className="p-6">
-                <h3 className="text-2xl font-medium text-electric-navy mb-4">INSTALAÇÃO DE CÂMERAS</h3>
-                <p className="text-gray-600 mb-6">Sistemas de segurança com câmeras de alta qualidade e monitoramento 24h.</p>
-                <Button variant="electric-orange" className="w-full font-bold text-xl py-3 rounded-lg">
+                <h3 className="text-xl font-medium text-electric-navy mb-4">INSTALAÇÃO DE CÂMERAS</h3>
+                <p className="text-gray-600 mb-4 text-sm">Sistemas de segurança com câmeras de alta qualidade e monitoramento 24h.</p>
+                <p className="text-electric-orange font-bold mb-4">A partir de R$ 450,00</p>
+                <Button variant="electric-orange" className="w-full font-bold text-lg py-2 rounded-lg">
                   DETALHES
                 </Button>
               </div>
@@ -185,15 +235,45 @@ const Index = () => {
 
             {/* Service 3 */}
             <div className="bg-white rounded-lg shadow-xl overflow-hidden transform hover:scale-105 transition-all duration-300">
-              <div className="h-80 bg-cover bg-center" style={{ backgroundImage: `url(${serviceElectrical})` }}></div>
+              <div className="h-64 bg-cover bg-center" style={{ backgroundImage: `url(${serviceElectrical})` }}></div>
               <div className="p-6">
-                <h3 className="text-2xl font-medium text-electric-navy mb-4">INSTALAÇÕES ELÉTRICAS</h3>
-                <p className="text-gray-600 mb-6">Instalações elétricas residenciais e comerciais com total segurança.</p>
-                <Button variant="electric-orange" className="w-full font-bold text-xl py-3 rounded-lg">
+                <h3 className="text-xl font-medium text-electric-navy mb-4">INSTALAÇÕES ELÉTRICAS</h3>
+                <p className="text-gray-600 mb-4 text-sm">Instalações elétricas residenciais e comerciais com total segurança.</p>
+                <p className="text-electric-orange font-bold mb-4">A partir de R$ 180,00</p>
+                <Button variant="electric-orange" className="w-full font-bold text-lg py-2 rounded-lg">
                   DETALHES
                 </Button>
               </div>
             </div>
+
+            {/* Service 4 - New Air Conditioning Service */}
+            <div className="bg-white rounded-lg shadow-xl overflow-hidden transform hover:scale-105 transition-all duration-300">
+              <div className="h-64 bg-blue-200 flex items-center justify-center">
+                <Snowflake className="w-24 h-24 text-electric-blue" />
+              </div>
+              <div className="p-6">
+                <h3 className="text-xl font-medium text-electric-navy mb-4">INSTALAÇÃO DE AR CONDICIONADO</h3>
+                <p className="text-gray-600 mb-4 text-sm">Instalação e manutenção de sistemas de ar condicionado para máximo conforto.</p>
+                <p className="text-electric-orange font-bold mb-4">A partir de R$ 320,00</p>
+                <Button variant="electric-orange" className="w-full font-bold text-lg py-2 rounded-lg">
+                  DETALHES
+                </Button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Products Section */}
+      <section id="products" className="py-20 bg-electric-blue">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-16">
+            <h2 className="text-5xl font-bold text-white mb-4">PRODUTOS EM DESTAQUE</h2>
+            <div className="w-24 h-1 bg-electric-orange mx-auto"></div>
+          </div>
+
+          <div className="max-w-7xl mx-auto">
+            <HoverEffect items={products} />
           </div>
         </div>
       </section>
@@ -364,6 +444,7 @@ const Index = () => {
                       <option>Instalação de Postes</option>
                       <option>Instalação de Câmeras</option>
                       <option>Instalações Elétricas</option>
+                      <option>Instalação de Ar Condicionado</option>
                       <option>Outro</option>
                     </select>
                   </div>
@@ -395,6 +476,7 @@ const Index = () => {
                 <li>Instalação de Postes</li>
                 <li>Instalação de Câmeras</li>
                 <li>Instalações Elétricas</li>
+                <li>Instalação de Ar Condicionado</li>
                 <li>Manutenção Elétrica</li>
               </ul>
             </div>
@@ -410,6 +492,7 @@ const Index = () => {
                 <li>Materiais Elétricos</li>
                 <li>Sistemas de Segurança</li>
                 <li>Equipamentos Profissionais</li>
+                <li>Produtos em Destaque</li>
               </ul>
             </div>
             <div>
