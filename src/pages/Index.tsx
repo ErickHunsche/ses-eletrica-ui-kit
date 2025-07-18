@@ -2,6 +2,7 @@
 import { Button } from "@/components/ui/button";
 import { Phone, Mail, MapPin, Instagram, Facebook, ChevronDown, Truck, HardHat, ShoppingCart, Headphones, Settings, Shield, Zap, Snowflake } from "lucide-react";
 import { HoverEffect } from "@/components/ui/hover-effect";
+import Map from "@/components/Map";
 import heroExpert from "@/assets/hero-expert.jpg";
 import servicePoles from "@/assets/service-poles.jpg";
 import serviceCameras from "@/assets/service-cameras.jpg";
@@ -58,66 +59,91 @@ const Index = () => {
 
   return (
     <div className="min-h-screen bg-electric-gray font-kanit">
-      {/* Header */}
-      <header className="bg-electric-navy shadow-lg sticky top-0 z-50">
+      {/* Top Contact Bar */}
+      <div className="bg-electric-light-blue py-2">
         <div className="container mx-auto px-4">
-          <div className="flex items-center justify-between h-20">
-            {/* Logo and Company Name */}
+          <div className="flex items-center justify-between text-white text-sm">
+            <div className="flex items-center space-x-6">
+              <span>seseletrica@ses.com.br</span>
+              <span>(51)99999-9999</span>
+            </div>
             <div className="flex items-center space-x-4">
-              <div className="w-16 h-16 bg-electric-gray rounded-full flex items-center justify-center">
-                <span className="text-electric-navy font-bold text-xl">S&S</span>
+              <Instagram className="w-4 h-4" />
+              <span>@SESELETRICA</span>
+              <span>(51)99999-9999</span>
+              <Facebook className="w-4 h-4" />
+              <span>@SESELETRICA</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Header */}
+      <header className="bg-[#0C3282] shadow-lg sticky top-0 z-50 border-b border-[#1F1520]">
+        <div className="container mx-auto px-4">
+          <div className="flex items-center justify-between h-[272px]">
+            {/* Left side - Location */}
+            <div className="flex items-center space-x-3 text-white">
+              <MapPin className="w-6 h-6" />
+              <span className="text-2xl font-light">ROCA SALES - RS</span>
+            </div>
+
+            {/* Center - Logo and Company Name */}
+            <div className="text-center">
+              <div className="flex items-center justify-center space-x-4 mb-2">
+                <div className="w-20 h-20 bg-electric-gray rounded-full flex items-center justify-center">
+                  <span className="text-[#0C3282] font-bold text-2xl">S&S</span>
+                </div>
+                <div>
+                  <h1 className="text-white text-5xl font-medium">S&S ENERGIA</h1>
+                  <p className="text-white text-3xl font-light">descrição</p>
+                </div>
               </div>
-              <div>
-                <h1 className="text-white text-2xl font-medium">S&S ENERGIA</h1>
-                <p className="text-electric-gray text-sm font-light">Serviços Elétricos Profissionais</p>
+              
+              {/* Navigation Links */}
+              <div className="flex items-center justify-center space-x-8 mt-4">
+                <Button 
+                  variant="ghost" 
+                  className="text-white font-bold text-lg hover:bg-white/20 transition-all duration-300"
+                  onClick={() => scrollToSection('contact')}
+                >
+                  CONTATO
+                </Button>
+                <Button 
+                  variant="ghost" 
+                  className="text-white font-bold text-lg hover:bg-white/20 transition-all duration-300"
+                  onClick={() => scrollToSection('services')}
+                >
+                  ORÇAMENTO
+                </Button>
+                
+                <div className="w-16 h-16 bg-electric-gray rounded-full"></div>
+                
+                <Button 
+                  variant="ghost" 
+                  className="text-white font-bold text-lg hover:bg-white/20 transition-all duration-300"
+                  onClick={() => scrollToSection('services')}
+                >
+                  SERVIÇOS
+                </Button>
+                <Button 
+                  variant="ghost" 
+                  className="text-white font-bold text-lg hover:bg-white/20 transition-all duration-300"
+                  onClick={() => scrollToSection('about')}
+                >
+                  QUEM SOMOS?
+                </Button>
               </div>
             </div>
 
-            {/* Navigation Links */}
-            <div className="hidden md:flex items-center space-x-8">
+            {/* Right side - Contact Button */}
+            <div className="text-white">
               <Button 
-                variant="ghost" 
-                className="text-white font-bold text-lg hover:bg-white/20 transition-all duration-300"
-                onClick={() => scrollToSection('about')}
-              >
-                CONTATO
-              </Button>
-              <Button 
-                variant="ghost" 
-                className="text-white font-bold text-lg hover:bg-white/20 transition-all duration-300"
-                onClick={() => scrollToSection('services')}
-              >
-                ORÇAMENTO
-              </Button>
-              <Button 
-                variant="ghost" 
-                className="text-white font-bold text-lg hover:bg-white/20 transition-all duration-300"
-                onClick={() => scrollToSection('services')}
-              >
-                SERVIÇOS
-              </Button>
-              <Button 
-                variant="ghost" 
-                className="text-white font-bold text-lg hover:bg-white/20 transition-all duration-300"
-                onClick={() => scrollToSection('about')}
-              >
-                QUEM SOMOS?
-              </Button>
-              
-              {/* Orange Button */}
-              <Button 
-                variant="electric-orange"
-                className="font-bold text-lg px-6 py-3 rounded-full"
+                className="bg-electric-light-blue text-white px-6 py-3 rounded-2xl font-light text-lg hover:bg-electric-light-blue/90"
                 onClick={() => scrollToSection('contact')}
               >
-                ENTRAR
+                ENTRE EM CONTATO
               </Button>
-            </div>
-
-            {/* Contact Info */}
-            <div className="hidden lg:flex items-center space-x-2 text-white">
-              <Phone className="w-4 h-4" />
-              <span className="font-light">(51)99999-9999</span>
             </div>
           </div>
         </div>
@@ -363,8 +389,8 @@ const Index = () => {
             <div className="w-24 h-1 bg-electric-accent mx-auto"></div>
           </div>
 
-          <div className="max-w-4xl mx-auto">
-            <div className="grid md:grid-cols-2 gap-8">
+          <div className="max-w-6xl mx-auto">
+            <div className="grid lg:grid-cols-3 gap-8">
               {/* Contact Info */}
               <div className="space-y-6">
                 <div className="flex items-center space-x-4 text-white">
@@ -460,6 +486,11 @@ const Index = () => {
                     ENVIAR SOLICITAÇÃO
                   </Button>
                 </form>
+              </div>
+
+              {/* Map */}
+              <div>
+                <Map />
               </div>
             </div>
           </div>
