@@ -1,3 +1,4 @@
+
 import type { Config } from "tailwindcss";
 
 export default {
@@ -20,6 +21,9 @@ export default {
 		extend: {
 			fontFamily: {
 				'kanit': ['Kanit', 'sans-serif'],
+			},
+			maxWidth: {
+				container: "1280px",
 			},
 			colors: {
 				border: 'hsl(var(--border))',
@@ -87,6 +91,11 @@ export default {
 				md: 'calc(var(--radius) - 2px)',
 				sm: 'calc(var(--radius) - 4px)'
 			},
+			animation: {
+				'accordion-down': 'accordion-down 0.2s ease-out',
+				'accordion-up': 'accordion-up 0.2s ease-out',
+				'marquee': 'marquee var(--duration) linear infinite',
+			},
 			keyframes: {
 				'accordion-down': {
 					from: {
@@ -103,11 +112,11 @@ export default {
 					to: {
 						height: '0'
 					}
+				},
+				'marquee': {
+					from: { transform: 'translateX(0)' },
+					to: { transform: 'translateX(calc(-100% - var(--gap)))' }
 				}
-			},
-			animation: {
-				'accordion-down': 'accordion-down 0.2s ease-out',
-				'accordion-up': 'accordion-up 0.2s ease-out'
 			}
 		}
 	},
