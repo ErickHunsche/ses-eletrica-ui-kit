@@ -1,7 +1,6 @@
-
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { MapPin, Instagram, Facebook, Sun, Moon } from "lucide-react";
+import { MapPin, Instagram, Facebook, Sun, Moon, Phone, Mail, Zap, Menu, X, MessageCircle } from "lucide-react";
 
 interface HeaderProps {
   isScrolled: boolean;
@@ -11,116 +10,144 @@ interface HeaderProps {
 }
 
 const Header = ({ isScrolled, isDarkMode, onDarkModeToggle, scrollToSection }: HeaderProps) => {
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
+  const navItems = [
+    { label: 'Início', id: 'hero' },
+    { label: 'Serviços', id: 'services' },
+    { label: 'Sobre', id: 'about' },
+    { label: 'Contato', id: 'contact' }
+  ];
+
   return (
     <>
-      {/* Top Contact Bar */}
-      <div className="bg-electric-light-blue py-2">
-        <div className="container mx-auto px-4">
-          <div className="flex items-center justify-between text-white text-xs md:text-sm">
-            <div className="flex items-center space-x-3 md:space-x-6">
-              <span className="hidden md:inline">seseletrica@ses.com.br</span>
-              <span>(51)99999-9999</span>
+      {/* Top Bar - Ultra Minimal */}
+      <div className="bg-slate-900 py-2">
+        <div className="container mx-auto px-6">
+          <div className="flex items-center justify-between text-xs text-slate-400">
+            <div className="flex items-center space-x-4">
+              <div className="flex items-center space-x-1">
+                <Mail className="w-3 h-3" />
+                <span className="hidden md:inline">seseletrica@ses.com.br</span>
+              </div>
+              <div className="flex items-center space-x-1">
+                <Phone className="w-3 h-3" />
+                <span>(51) 99999-9999</span>
+              </div>
             </div>
-            <div className="flex items-center space-x-2 md:space-x-4">
-              <Instagram className="w-4 h-4" />
-              <span className="hidden md:inline">@SESELETRICA</span>
-              <Facebook className="w-4 h-4" />
-              <button 
-                onClick={onDarkModeToggle}
-                className="ml-4 p-1 rounded-full bg-white/20 hover:bg-white/30 transition-colors"
-              >
-                {isDarkMode ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />}
+            
+            <div className="flex items-center space-x-3">
+              <Instagram className="w-3 h-3 hover:text-pink-400 cursor-pointer transition-colors" />
+              <Facebook className="w-3 h-3 hover:text-blue-400 cursor-pointer transition-colors" />
+              <button onClick={onDarkModeToggle} className="hover:text-cyan-400 transition-colors">
+                {isDarkMode ? <Sun className="w-3 h-3" /> : <Moon className="w-3 h-3" />}
               </button>
             </div>
           </div>
         </div>
       </div>
 
-      {/* Enhanced Header with better mobile responsivity */}
-      <header className={`sticky top-0 z-50 transition-all duration-300 ${
+      {/* Main Header - Clean and Floating */}
+      <header className={`fixed top-8 left-1/2 transform -translate-x-1/2 z-50 transition-all duration-500 ${
         isScrolled 
-          ? 'h-14 md:h-16 bg-electric-navy/95 backdrop-blur-md shadow-2xl' 
-          : 'h-20 md:h-32 bg-electric-navy border-b border-electric-blue/20'
-      }`}>
-        <div className="container mx-auto px-4 h-full">
-          <div className="flex items-center justify-between h-full">
-            {/* Left - Location - Hidden on mobile when scrolled */}
-            <div className={`flex items-center space-x-2 text-white transition-all duration-300 ${isScrolled ? 'hidden md:flex' : 'flex'}`}>
-              <MapPin className="w-4 h-4" />
-              <span className={`font-light transition-all duration-300 ${isScrolled ? 'text-xs md:text-sm' : 'text-sm md:text-lg'}`}>
-                ROCA SALES - RS
-              </span>
-            </div>
+          ? 'w-11/12 max-w-5xl bg-white/90 backdrop-blur-xl shadow-2xl shadow-slate-900/10' 
+          : 'w-11/12 max-w-6xl bg-white/80 backdrop-blur-sm'
+      } rounded-2xl border border-white/20`}>
+        
+        <div className="px-8 py-4">
+          <div className="flex items-center justify-between">
+            
+            {/* Navigation - Left */}
+            <nav className="hidden md:flex items-center space-x-6">
+              {navItems.slice(0, 2).map((item) => (
+                <Button 
+                  key={item.id}
+                  variant="ghost" 
+                  size="sm"
+                  className="text-slate-700 hover:text-slate-900 font-medium"
+                  onClick={() => scrollToSection(item.id)}
+                >
+                  {item.label}
+                </Button>
+              ))}
+            </nav>
 
-            {/* Center - Logo and Navigation */}
-            <div className="flex flex-col items-center">
-              <div className="flex items-center space-x-4 mb-1 md:mb-2">
-                <h1 className={`text-white font-medium transition-all duration-300 ${isScrolled ? 'text-lg md:text-xl' : 'text-xl md:text-3xl'}`}>
-                  S&S ENERGIA
-                </h1>
+            {/* Logo - Center */}
+            <div className="flex items-center space-x-3">
+              <div className="w-8 h-8 bg-gradient-to-br from-cyan-500 to-blue-600 rounded-lg flex items-center justify-center">
+                <Zap className="w-4 h-4 text-white" />
               </div>
-              
-              {/* Compact Navigation - More responsive */}
-              <div className={`flex items-center space-x-1 md:space-x-2 transition-all duration-300 ${isScrolled ? 'scale-90' : ''}`}>
-                <Button 
-                  variant="ghost" 
-                  size="sm"
-                  className={`text-white bg-white/10 hover:bg-white/20 backdrop-blur-sm rounded-full border border-white/20 transition-all duration-300 ${
-                    isScrolled ? 'text-xs px-2 py-1' : 'text-xs md:text-sm px-2 md:px-3 py-1'
-                  }`}
-                  onClick={() => scrollToSection('contact')}
-                >
-                  CONTATO
-                </Button>
-                <Button 
-                  variant="ghost" 
-                  size="sm"
-                  className={`text-white bg-white/10 hover:bg-white/20 backdrop-blur-sm rounded-full border border-white/20 transition-all duration-300 ${
-                    isScrolled ? 'text-xs px-2 py-1' : 'text-xs md:text-sm px-2 md:px-3 py-1'
-                  }`}
-                  onClick={() => scrollToSection('services')}
-                >
-                  ORÇAMENTO
-                </Button>
-                
-                <div className={`bg-electric-gray rounded-full flex items-center justify-center transition-all duration-300 ${isScrolled ? 'w-6 h-6 md:w-8 md:h-8' : 'w-8 h-8 md:w-10 md:h-10'}`}>
-                  <span className={`text-electric-navy font-bold transition-all duration-300 ${isScrolled ? 'text-xs' : 'text-xs md:text-sm'}`}>S&S</span>
-                </div>
-                
-                <Button 
-                  variant="ghost" 
-                  size="sm"
-                  className={`text-white bg-white/10 hover:bg-white/20 backdrop-blur-sm rounded-full border border-white/20 transition-all duration-300 ${
-                    isScrolled ? 'text-xs px-2 py-1' : 'text-xs md:text-sm px-2 md:px-3 py-1'
-                  }`}
-                  onClick={() => scrollToSection('services')}
-                >
-                  SERVIÇOS
-                </Button>
-                <Button 
-                  variant="ghost" 
-                  size="sm"
-                  className={`text-white bg-white/10 hover:bg-white/20 backdrop-blur-sm rounded-full border border-white/20 transition-all duration-300 ${
-                    isScrolled ? 'text-xs px-2 py-1 hidden md:flex' : 'text-xs md:text-sm px-2 md:px-3 py-1'
-                  }`}
-                  onClick={() => scrollToSection('about')}
-                >
-                  SOBRE
-                </Button>
+              <div>
+                <h1 className="text-xl font-bold text-slate-900">S&S Energia</h1>
               </div>
             </div>
+            
+            {/* Navigation - Right + CTA */}
+            <div className="flex items-center space-x-6">
+              <nav className="hidden md:flex items-center space-x-6">
+                {navItems.slice(2).map((item) => (
+                  <Button 
+                    key={item.id}
+                    variant="ghost" 
+                    size="sm"
+                    className="text-slate-700 hover:text-slate-900 font-medium"
+                    onClick={() => scrollToSection(item.id)}
+                  >
+                    {item.label}
+                  </Button>
+                ))}
+              </nav>
 
-            {/* Right - Contact Button */}
-            <Button 
-              className={`bg-electric-light-blue hover:bg-electric-light-blue/90 transition-all duration-300 rounded-full ${
-                isScrolled ? 'px-2 py-1 text-xs md:px-3 md:py-1 md:text-xs' : 'px-3 py-2 text-xs md:px-4 md:py-2 md:text-sm'
-              }`}
-              onClick={() => scrollToSection('contact')}
-            >
-              CONTATO
-            </Button>
+              {/* WhatsApp CTA */}
+              <Button 
+                className="bg-green-500 hover:bg-green-600 text-white font-medium rounded-full px-4 py-2 flex items-center space-x-2 shadow-lg hover:shadow-xl transition-all duration-300 hidden md:flex"
+                onClick={() => window.open('https://wa.me/5551999999999?text=Olá! Gostaria de solicitar um orçamento para serviços elétricos.', '_blank')}
+              >
+                <MessageCircle className="w-4 h-4" />
+                <span>WhatsApp</span>
+              </Button>
+
+              {/* Mobile Menu */}
+              <button 
+                className="md:hidden p-2 text-slate-700"
+                onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              >
+                {isMobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+              </button>
+            </div>
           </div>
         </div>
+
+        {/* Mobile Menu */}
+        {isMobileMenuOpen && (
+          <div className="md:hidden border-t border-slate-200 bg-white/95 backdrop-blur-xl rounded-b-2xl">
+            <nav className="px-8 py-6 space-y-3">
+              {navItems.map((item) => (
+                <Button 
+                  key={item.id}
+                  variant="ghost" 
+                  className="w-full justify-start text-slate-700 hover:text-slate-900"
+                  onClick={() => {
+                    scrollToSection(item.id);
+                    setIsMobileMenuOpen(false);
+                  }}
+                >
+                  {item.label}
+                </Button>
+              ))}
+              <Button 
+                className="w-full bg-green-500 hover:bg-green-600 text-white rounded-full flex items-center justify-center space-x-2 mt-4"
+                onClick={() => {
+                  window.open('https://wa.me/5551999999999?text=Olá! Gostaria de solicitar um orçamento para serviços elétricos.', '_blank');
+                  setIsMobileMenuOpen(false);
+                }}
+              >
+                <MessageCircle className="w-4 h-4" />
+                <span>WhatsApp</span>
+              </Button>
+            </nav>
+          </div>
+        )}
       </header>
     </>
   );
