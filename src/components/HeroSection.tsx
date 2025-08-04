@@ -89,16 +89,6 @@ const HeroSection = ({ isScrolled, scrollToSection }: HeroSectionProps) => {
         <div className="container mx-auto px-6 pt-20 pb-8">
           <div className="text-center max-w-4xl mx-auto space-y-6">
             
-            {/* Trust Badge */}
-            <div className="inline-flex items-center space-x-2 bg-white/80 backdrop-blur-sm rounded-full px-6 py-3 border border-blue-200 shadow-sm">
-              <div className="flex items-center">
-                {[...Array(5)].map((_, i) => (
-                  <Star key={i} className="w-4 h-4 text-yellow-500 fill-current" />
-                ))}
-              </div>
-              <span className="text-sm font-medium text-gray-700 ml-2">5.0 • +500 clientes satisfeitos</span>
-            </div>
-
             {/* Main Headline */}
             <div className="space-y-4">
               <h1 className="text-4xl md:text-6xl lg:text-7xl font-black leading-tight text-gray-900">
