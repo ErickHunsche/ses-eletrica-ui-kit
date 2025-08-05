@@ -75,7 +75,7 @@ const Header = ({ isScrolled, isDarkMode, onDarkModeToggle, scrollToSection }: H
             
               <div>
                 <img
-                  src="src/assets/converter.png"
+                  src="/converter.png"
                   alt="S&S Energia"
                   className="h-12 w-auto"
                 />

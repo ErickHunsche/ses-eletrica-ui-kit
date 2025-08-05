@@ -151,7 +151,7 @@ const HeroSection = ({ isScrolled, scrollToSection }: HeroSectionProps) => {
             {/* Truck Image - Now the Central Hero */}
             <div className="relative z-10">
               <img 
-                src="src/assets/Caminhao.png"
+                src="/Caminhao.png"
                 alt="Caminhão de Serviços Elétricos"
                 className="w-full max-w-[800px] h-auto mx-auto object-contain filter drop-shadow-2xl"
               />
